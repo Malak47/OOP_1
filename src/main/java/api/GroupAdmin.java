@@ -10,14 +10,6 @@ public class GroupAdmin implements Sender {
     private UndoableStringBuilder sequence;
     private ArrayList<Member> members;
 
-    public ArrayList<Member> getMembers() {
-        return members;
-    }
-
-    public UndoableStringBuilder getSequence() {
-        return sequence;
-    }
-
     /**
      * Constructs a default GroupAdmin.
      */
@@ -107,5 +99,21 @@ public class GroupAdmin implements Sender {
     public void update() {
         for (Member member : members)
             member.update(this.sequence);
+    }
+
+    /**
+     *
+     * @return: members list.
+     */
+    public ArrayList<Member> getMembers() {
+        return members;
+    }
+
+    /**
+     *
+     * @return: sequence.
+     */
+    public UndoableStringBuilder getSequence() {
+        return sequence;
     }
 }
