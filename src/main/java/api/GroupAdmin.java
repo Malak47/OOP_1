@@ -20,6 +20,11 @@ public class GroupAdmin implements Sender {
         this.members = members;
     }
 
+    public GroupAdmin(GroupAdmin other){
+        this.sequence = other.sequence;
+        this.members = other.members;
+    }
+
     @Override
     public void register(Member obj) {
         this.members.add(obj);
@@ -33,20 +38,29 @@ public class GroupAdmin implements Sender {
     @Override
     public void insert(int offset, String obj) {
         this.sequence.insert(offset, obj);
+        update();
     }
 
     @Override
     public void append(String obj) {
         this.sequence.append(obj);
+        update();
     }
 
     @Override
     public void delete(int start, int end) {
         this.sequence.delete(start, end);
+        update();
     }
 
     @Override
     public void undo() {
         this.sequence.undo();
+        update();
+    }
+
+    private void update(){
+        for(Member member:members)
+            member.update(this.sequence);
     }
 }
