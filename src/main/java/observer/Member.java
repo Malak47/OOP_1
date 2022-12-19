@@ -1,5 +1,5 @@
 package observer;
 
 public interface Member {
-        public void update(UndoableStringBuilder usb);
+    public void update(UndoableStringBuilder usb);
 }

@@ -1,3 +1,5 @@
+package observer;
+
 import java.util.EmptyStackException;
 import java.util.Stack;
 
@@ -7,7 +9,7 @@ import java.util.Stack;
  * @author : Malak Qaadan & Lara Abu hamad
  * @version : 1.1 - 10'th of November 2022
  */
-class UndoableStringBuilder {
+public class UndoableStringBuilder {
     private char[] str;
     private Stack<char[]> cache;
     public static final String ANSI_RESET = "\u001B[0m";
