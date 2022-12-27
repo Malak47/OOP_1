@@ -36,7 +36,12 @@ public class GroupAdmin implements Sender {
      */
     @Override
     public void register(Member obj) {
-        this.members.add(obj);
+        if (!getMembers().contains(obj)) {
+            this.members.add(obj);
+            System.out.println("Member: " + ((ConcreteMember)(this.members.get(this.members.indexOf(obj)))).GetID() + " registered.");
+        } else {
+            System.out.println("Member: " + ((ConcreteMember)(this.members.get(this.members.indexOf(obj)))).GetID() + " is already registered.");
+        }
     }
 
     /**
@@ -46,7 +51,12 @@ public class GroupAdmin implements Sender {
      */
     @Override
     public void unregister(Member obj) {
-        this.members.remove(obj);
+        if (getMembers().contains(obj)) {
+            System.out.println("Member: " + ((ConcreteMember)(this.members.get(this.members.indexOf(obj)))).GetID() + " unregistered.");
+            this.members.remove(obj);
+        } else {
+            System.out.println("The given Member isn't contained in members list.");
+        }
     }
 
     /**
@@ -102,7 +112,6 @@ public class GroupAdmin implements Sender {
     }
 
     /**
-     *
      * @return: members list.
      */
     public ArrayList<Member> getMembers() {
@@ -110,7 +119,6 @@ public class GroupAdmin implements Sender {
     }
 
     /**
-     *
      * @return: sequence.
      */
     public UndoableStringBuilder getSequence() {

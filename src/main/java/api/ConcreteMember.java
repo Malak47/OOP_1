@@ -2,14 +2,18 @@ package api;
 
 import observer.*;
 
+import java.util.Random;
+
 public class ConcreteMember implements Member {
     private UndoableStringBuilder usb;
+    private String ID;
 
     /**
      * Constructs a new ConcreteMember object with an empty UndoableStringBuilder.
      */
     public ConcreteMember() {
         this.usb = new UndoableStringBuilder();
+        this.ID = "member" + (new Random().nextInt(1000 - 10) + 10);    //random member name.
     }
 
     /**
@@ -19,6 +23,21 @@ public class ConcreteMember implements Member {
      */
     public ConcreteMember(UndoableStringBuilder usb) {
         this.usb = usb;
+        this.ID = "member" + (new Random().nextInt(1000 - 10) + 10);    //random member name.
+    }
+
+    public ConcreteMember(String ID) {
+        this.usb = new UndoableStringBuilder();
+        this.ID = ID;
+    }
+
+    public ConcreteMember(UndoableStringBuilder usb, String ID) {
+        this.usb = usb;
+        this.ID = ID;
+    }
+
+    public String GetID() {
+        return this.ID;
     }
 
     /**
