@@ -82,3 +82,5 @@ command:
 ```
 java -javaagent:path/to/jol.jar -cp junit-platform-console-standalone.jar org.junit.platform.console.ConsoleLauncher -c Tests
 ```
+## Results of test that uses `JvmUtilities`: 
+![alt text](https://github.com/Malak47/OOP_1/blob/main/Test-Results.jpg?raw=true)
