@@ -39,10 +39,15 @@ class GroupAdminTest {
         this.groupAdmin.append(this.usb.toString());
         this.groupAdmin.insert(2, " world");
         assertEquals("he worldllo", this.groupAdmin.getSequence().toString());
+        this.groupAdmin.register(this.member1);
+        this.groupAdmin.register(this.member2);
 
         this.groupAdmin.undo();
         this.groupAdmin.undo();
         this.usb.undo();
+        this.groupAdmin.unregister(this.member1);
+        this.groupAdmin.unregister(this.member2);
+
     }
 
     @Test
@@ -89,8 +94,8 @@ class GroupAdminTest {
         this.groupAdmin.append(this.usb.toString());
         this.groupAdmin.append(" world");
         this.groupAdmin.update();
-        assertEquals("hello world", this.member1.toString());
-        assertEquals("hello world", this.member2.toString());
+        assertEquals("hello world", this.member1.getUsb().toString());
+        assertEquals("hello world", this.member2.getUsb().toString());
 
         this.groupAdmin.undo();
         this.groupAdmin.undo();

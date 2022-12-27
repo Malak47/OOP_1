@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class ConcreteMember implements Member {
     private UndoableStringBuilder usb;
-    private String ID;
+    private final String ID;
 
     /**
      * Constructs a new ConcreteMember object with an empty UndoableStringBuilder.
@@ -26,17 +26,29 @@ public class ConcreteMember implements Member {
         this.ID = "member" + (new Random().nextInt(1000 - 10) + 10);    //random member name.
     }
 
+    /**
+     * Constructs a new ConcreteMember object with the specified String ID.
+     * @param ID: String that tells the name/ID of the member.
+     */
     public ConcreteMember(String ID) {
         this.usb = new UndoableStringBuilder();
         this.ID = ID;
     }
 
+    /**
+     * Constructs a new ConcreteMember object with the specified UndoableStringBuilder String ID.
+     * @param usb: The UndoableStringBuilder to be used in this ConcreteMember object.
+     * @param ID: String that tells the name/ID of the member.
+     */
     public ConcreteMember(UndoableStringBuilder usb, String ID) {
         this.usb = usb;
         this.ID = ID;
     }
 
-    public String GetID() {
+    /**
+     * @return: The ID of the specified member.
+     */
+    public String getID() {
         return this.ID;
     }
 
@@ -64,7 +76,10 @@ public class ConcreteMember implements Member {
      */
     @Override
     public String toString() {
-        return this.usb.toString();
+        return "ConcreteMember{" +
+                "usb::" + usb.toString() +
+                ", ID::" + ID +
+                '}';
     }
 
 }
